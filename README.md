@@ -1,5 +1,7 @@
 # Netflix Dataset Analysis Project
 
+![Netflix Logo](netflix.logo.jpg)
+
 This project involves analyzing a dataset of Netflix content to answer 15 business-related questions. The goal is to extract actionable insights and provide solutions to these problems using SQL queries. Below is an overview of the project, along with instructions for setup and usage.
 
 ---
