@@ -5,10 +5,17 @@
 -- 1. Count the number of Movies vs TV Shows
 
 -- SOLUTION 1
-SELECT COUNT(case when show_type = 'Movie' then 1 END) no_of_movie, COUNT(case when show_type = 'TV Show' then 1 END) no_of_tv_show FROM netflix;
+SELECT 
+	COUNT(case when show_type = 'Movie' then 1 END) no_of_movie, 
+	COUNT(case when show_type = 'TV Show' then 1 END) no_of_tv_show 
+FROM netflix;
 
 -- SOLUTION 2 
-SELECT show_type, COUNT(*) total_contents FROM netflix GROUP BY show_type;
+SELECT 
+	show_type, 
+	COUNT(*) total_contents 
+FROM netflix 
+GROUP BY show_type;
 
 -- 2. Find the most common rating for movies and TV shows
 
