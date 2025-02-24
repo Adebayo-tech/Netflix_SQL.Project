@@ -217,9 +217,19 @@ FROM cte
 WHERE country LIKE '%India%' AND show_type = 'Movie'
 ORDER BY num_of_contents DESC
 LIMIT 10;
--- 15. Categorize the content based on the presence of the keywords 'kill' and 'violence' in -- the description field. Label content containing these keywords as 'Bad' and all other -- content as 'Good'. Count how many items fall into each category.movies_net
+-- 15. Categorize the content based on the presence of the keywords 'kill' and 'violence' in
+-- the description field. Label content containing these keywords as 'Bad' and all other
+-- content as 'Good'. Count how many items fall into each category.movies_net
 
--- categorizing contents SELECT show_type, title, case when DESCRIPTION LIKE '%kill%' OR DESCRIPTION LIKE '%violence%' then 'Bad' ELSE 'Good' END AS category FROM netflix;
+-- categorizing contents 
+
+SELECT 
+	show_type, 
+	title, 
+	case when DESCRIPTION LIKE '%kill%' 
+	   OR DESCRIPTION LIKE '%violence%' then 'Bad' ELSE 'Good' 
+	END AS category 
+FROM netflix;
 
 -- counting contents
 
@@ -228,7 +238,10 @@ SELECT
 	   when DESCRIPTION LIKE '%kill%' 
 	      OR DESCRIPTION LIKE '%violence%' then 'Bad' ELSE 'Good' END AS category, 
 	COUNT(*) num_of_contents_per_category 
-FROM netflix GROUP BY 1;
+FROM netflix 
+GROUP BY 1;
+
+
 
 SELECT * FROM netflix
 
