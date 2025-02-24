@@ -22,14 +22,21 @@ GROUP BY show_type;
 WITH num_of_ratings AS
 	( SELECT show_type, rating,
 	COUNT(*) counts FROM netflix GROUP BY rating,
-	show_type ORDER BY show_type, counts DESC )
+	show_type ORDER BY show_type, counts DESC 
+	)
 
 SELECT * FROM num_of_ratings 
-WHERE counts=( SELECT MAX(counts) 
+WHERE counts=( 
+	SELECT 
+	  MAX(counts) 
 	FROM num_of_ratings 
-	WHERE show_type = 'Movie' ) 
-	OR counts=( SELECT MAX(counts) 
-	FROM num_of_ratings WHERE show_type = 'TV Show' );
+	WHERE show_type = 'Movie'
+	       ) 
+	OR counts=( 
+	            SELECT MAX(counts) 
+	            FROM num_of_ratings
+	            WHERE show_type = 'TV Show' 
+	                );
 
 -- 3. List all movies released in a specific year (e.g., 2020)
 
@@ -38,8 +45,8 @@ SELECT
 	title, 
 	release_year 
 FROM netflix 
-WHERE show_type = 'Movie' 
-	AND release_year = '2020';
+WHERE show_type = 'Movie'
+   AND release_year = '2020';
 
 -- 4. Find the top 5 countries with the most content on Netflix
 
